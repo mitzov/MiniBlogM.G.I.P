@@ -1,0 +1,23 @@
+<div class="d-flex align-items-center mb-3">
+  <h1 class="h3 m-0">Tutti i Post</h1>
+  <div class="ms-auto">
+    <a class="btn btn-primary" routerLink="/new">+ Nuovo</a>
+  </div>
+</div>
+
+<div *ngIf="posts.length === 0" class="alert alert-info">Nessun post. Crea il primo!</div>
+
+<div class="card" *ngFor="let p of posts">
+  <div class="card-body">
+    <h5 class="card-title mb-1">
+      <a [routerLink]="['/posts', p.id]">{{ p.titolo }}</a>
+    </h5>
+    <div class="text-muted small mb-2">Di {{ p.autore }} • {{ p.createdAt | date:'medium' }}</div>
+    <p class="card-text">{{ p.contenuto | slice:0:160 }}<span *ngIf="p.contenuto.length > 160">…</span></p>
+    <div class="d-flex gap-2">
+      <a class="btn btn-sm btn-outline-secondary" [routerLink]="['/posts', p.id]">Apri</a>
+      <a class="btn btn-sm btn-outline-warning" [routerLink]="['/edit', p.id]">Modifica</a>
+      <button class="btn btn-sm btn-outline-danger" (click)="delete(p.id)">Elimina</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<ng-container *ngIf="post">
+  <div class="mb-3">
+    <a class="btn btn-light border" routerLink="/">← Torna alla lista</a>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h1 class="h4">{{ post.titolo }}</h1>
+      <div class="text-muted small mb-3">Di {{ post.autore }} • {{ post.createdAt | date:'fullDate' }} {{ post.createdAt | date:'shortTime' }}</div>
+      <p class="mb-0" style="white-space: pre-wrap;">{{ post.contenuto }}</p>
+    </div>
+  </div>
+
+  <div class="mt-3 d-flex gap-2">
+    <a class="btn btn-warning" [routerLink]="['/edit', post.id]">Modifica</a>
+    <a class="btn btn-secondary" routerLink="/">Chiudi</a>
+  </div>
+</ng-container>
