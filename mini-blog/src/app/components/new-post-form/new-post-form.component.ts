@@ -15,6 +15,7 @@ export class NewPostFormComponent implements OnInit {
   titolo = '';
   contenuto = '';
   autore = '';
+  imageUrl = '';
   private editingId?: number;
 
   constructor(private postService: PostService, private router: Router, private route: ActivatedRoute) {}
@@ -29,6 +30,7 @@ export class NewPostFormComponent implements OnInit {
         this.titolo = post.titolo;
         this.contenuto = post.contenuto;
         this.autore = post.autore;
+        this.imageUrl = post.imageUrl || '';
       } else {
         alert('Post non trovato');
         this.router.navigateByUrl('/');
@@ -42,10 +44,17 @@ export class NewPostFormComponent implements OnInit {
       return;
     }
 
+    const postData = {
+      titolo: this.titolo.trim(),
+      contenuto: this.contenuto.trim(),
+      autore: this.autore.trim(),
+      imageUrl: this.imageUrl.trim() || undefined
+    };
+
     if (this.mode === 'new') {
-      this.postService.add({ titolo: this.titolo.trim(), contenuto: this.contenuto.trim(), autore: this.autore.trim() });
+      this.postService.add(postData);
     } else if (this.mode === 'edit' && this.editingId != null) {
-      this.postService.update(this.editingId, { titolo: this.titolo.trim(), contenuto: this.contenuto.trim(), autore: this.autore.trim() });
+      this.postService.update(this.editingId, postData);
     }
 
     this.router.navigateByUrl('/');

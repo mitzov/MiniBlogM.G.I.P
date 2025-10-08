@@ -5,6 +5,9 @@
 
   <div class="card">
     <div class="card-body">
+      <ng-container *ngIf="post.imageUrl">
+        <img [src]="post.imageUrl" alt="Immagine post" class="mb-3" style="max-width:100%;border-radius:12px;box-shadow:0 2px 8px #e0b97355;" />
+      </ng-container>
       <h1 class="h4">{{ post.titolo }}</h1>
       <div class="text-muted small mb-3">Di {{ post.autore }} • {{ post.createdAt | date:'fullDate' }} {{ post.createdAt | date:'shortTime' }}</div>
       <p class="mb-0" style="white-space: pre-wrap;">{{ post.contenuto }}</p>

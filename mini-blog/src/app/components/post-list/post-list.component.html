@@ -9,6 +9,9 @@
 
 <div class="card" *ngFor="let p of posts">
   <div class="card-body">
+    <ng-container *ngIf="p.imageUrl">
+      <img [src]="p.imageUrl" alt="Immagine post" class="mb-3" style="max-width:100%;border-radius:12px;box-shadow:0 2px 8px #e0b97355;" />
+    </ng-container>
     <h5 class="card-title mb-1">
       <a [routerLink]="['/posts', p.id]">{{ p.titolo }}</a>
     </h5>
