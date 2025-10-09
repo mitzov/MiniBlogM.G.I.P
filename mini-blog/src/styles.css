@@ -2,6 +2,16 @@
 /* Luxury Theme */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
+/* Set all text color to white globally */
+body, html, * {
+  color: #fff !important;
+}
+/* Custom style for 'torna alla lista' button */
+a.btn[routerLink="/"] {
+	background: #000 !important;
+	color: #fff !important;
+	border-color: #222 !important;
+}
 body {
 	font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
 	background: linear-gradient(135deg, #181818 0%, #232526 100%);

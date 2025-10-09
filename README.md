@@ -1,1 +1,0 @@
-# MiniBlogM.G.I.P
